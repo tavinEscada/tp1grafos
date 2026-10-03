@@ -1,5 +1,6 @@
 from src.grafo import Grafo
 from src.articulacao import encontra_articulacao, eh_articulacao
+from src.busca import busca_largura, componentes_conexas, possui_ciclo
 
 
 def menu():
@@ -13,6 +14,9 @@ def menu():
     print("4 - Informar vizinhos de um vértice")
     print("5 - Informar grau de um vértice")
     print("6 - Verificar se um vértice é articulação")
+    print("7 - Executar busca em largura")
+    print("8 - Identificar componentes conexas")
+    print("9 - Verificar existência de ciclos")
     print("0 - Sair")
     print("========================================")
 
@@ -59,6 +63,35 @@ while True:
             print("O vértice", vertice, "é articulação.")
         else:
             print("O vértice", vertice, "não é articulação.")
+
+    elif opcao == "7":
+
+        vertice = int(input("Digite o vértice inicial da busca: "))
+
+        ordem, fora_arvore = busca_largura(grafo, vertice)
+
+        print("Sequência da busca:", ordem)
+
+        if len(fora_arvore) == 0:
+            print("Não existem arestas fora da árvore BFS.")
+        else:
+            print("Arestas fora da árvore BFS:", fora_arvore)
+
+    elif opcao == "8":
+
+        componentes = componentes_conexas(grafo)
+
+        print("Número de componentes conexas:", len(componentes))
+
+        for i in range(len(componentes)):
+            print("Componente", i + 1, ":", componentes[i])
+
+    elif opcao == "9":
+
+        if possui_ciclo(grafo):
+            print("O grafo possui ciclo.")
+        else:
+            print("O grafo não possui ciclo.")
 
     elif opcao == "0":
 
