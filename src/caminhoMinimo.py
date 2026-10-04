@@ -2,14 +2,14 @@ import heapq
 
 def dijkstra(grafo, inicio):
     n = grafo.ordem()
-    inicio_idx = inicio - 1
+    inicioIdx = inicio - 1
     
     distancias = [float('inf')] * n
-    distancias[inicio_idx] = 0.0
+    distancias[inicioIdx] = 0.0
     
     antecessores = [-1] * n
     
-    pq = [(0.0, inicio_idx)]
+    pq = [(0.0, inicioIdx)]
     
     while pq:
         distAtual, u = heapq.heappop(pq)
@@ -38,6 +38,6 @@ def dijkstra(grafo, inicio):
             caminho.reverse()
             caminhos[i + 1] = caminho
             
-    dist_dict = {i + 1: distancias[i] for i in range(n)}
+    distDict = {i + 1: distancias[i] for i in range(n)}
     
-    return dist_dict, caminhos
+    return distDict, caminhos

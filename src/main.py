@@ -102,7 +102,7 @@ while True:
                 d = dist[i]
 
                 if d == float('inf'):
-                    d = "Inalcançável"
+                    dStr = "Inalcançável"
 
                 else:
                     dStr = f"{d:.1f}"
