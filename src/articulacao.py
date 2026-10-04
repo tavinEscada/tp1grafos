@@ -1,5 +1,4 @@
-from src.grafo import Grafo
-
+from grafo import Grafo
 
 def dfs(grafo, u, visitados, pai, profundidade, low, articulacoes, tempo):
 

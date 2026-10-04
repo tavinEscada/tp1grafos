@@ -7,6 +7,9 @@ class Grafo:
         self.ler_grafo(arquivo)
 
     def ler_grafo(self, arquivo):
+
+        arquivo = "testes/" + arquivo
+
         with open(arquivo, "r") as f:
             linhas = f.readlines()
 

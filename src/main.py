@@ -1,7 +1,7 @@
-from src.grafo import Grafo
-from src.articulacao import encontra_articulacao, eh_articulacao
-from src.busca import busca_largura, componentes_conexas, possui_ciclo
-
+from caminhoMinimo import dijkstra
+from grafo import Grafo
+from articulacao import encontra_articulacao, eh_articulacao
+from busca import busca_largura, componentes_conexas, possui_ciclo
 
 def menu():
 
@@ -17,6 +17,7 @@ def menu():
     print("7 - Executar busca em largura")
     print("8 - Identificar componentes conexas")
     print("9 - Verificar existência de ciclos")
+    print("10 - Calcular caminhos mínimos")
     print("0 - Sair")
     print("========================================")
 
@@ -93,6 +94,23 @@ while True:
         else:
             print("O grafo não possui ciclo.")
 
+    elif opcao == "10":
+        origem = int(input("Digite o vertice de origem: "))
+        dist, caminhos = dijkstra(grafo, origem)
+
+        for i in range(1, grafo.ordem() + 1):
+                d = dist[i]
+
+                if d == float('inf'):
+                    d = "Inalcançável"
+
+                else:
+                    dStr = f"{d:.1f}"
+
+                print(f" para o vertice", i,  ": distancia =", dStr, "| caminho =", caminhos[i])
+
+        print()
+        
     elif opcao == "0":
 
         print("Programa encerrado.")
